@@ -19,8 +19,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore ./WebAppCICD
+      run: dotnet restore ./WebAppCICD/
     - name: Build
-      run: dotnet build --no-restore ./WebAppCICD
+      run: dotnet build --no-restore ./WebAppCICD/
     #- name: Test
     #  run: dotnet test --no-build --verbosity normal
