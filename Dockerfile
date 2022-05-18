@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["WebAppCICD/WebAppCICD.Api/WebAppCICD.Api.csproj", "WebAppCICD/WebAppCICD.Api/"]
 RUN dotnet restore "WebAppCICD/WebAppCICD.Api/WebAppCICD.Api.csproj"
 COPY . .
-WORKDIR "/src/WebAppCICD.Api"
+WORKDIR "/src/WebAppCICD/WebAppCICD.Api"
 RUN dotnet build "WebAppCICD.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
