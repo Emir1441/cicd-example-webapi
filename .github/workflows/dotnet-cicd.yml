@@ -14,19 +14,14 @@ jobs:
     steps:
     - name: Copy files
       uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore ./WebAppCICD/
-    - name: Build
-      run: dotnet build --no-restore ./WebAppCICD/
-    - name: Deploy to Heroku
-      uses: akhileshns/heroku-deploy@v3.12.12
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-        heroku_email: ${{secrets.HEROKU_EMAIL}}
-    #- name: Test
-    #  run: dotnet test --no-build --verbosity normal
+      
+    - name: Build and deploy the docker image
+      env:
+        HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+        APP_NAME: ${{'web-api-net-core'}}
+      run:
+        cd ./ASPNetCoreLabs/HerokuContainer
+        docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+        heroku container:push web -a $APP_NAME
+        heroku container:release web -a $APP_Name
+        
