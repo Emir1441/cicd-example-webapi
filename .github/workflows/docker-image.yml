@@ -20,6 +20,6 @@ jobs:
         APP_NAME: ${{'dotnet-docker-heroku-api'}}
       run:
         #cd ./WebAppCICD/WebAppCICD.Api
-        docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+        docker login --username=emir --password=$HEROKU_API_KEY registry.heroku.com
         heroku container:push web $APP_NAME
         heroku container:release web $APP_Name
