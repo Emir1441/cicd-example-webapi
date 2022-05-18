@@ -6,7 +6,7 @@ EXPOSE 80
 #EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /WebAppCICD
+WORKDIR /src
 COPY ["WebAppCICD.Api/WebAppCICD.Api.csproj", "WebAppCICD.Api/"]
 RUN dotnet restore "WebAppCICD.Api/WebAppCICD.Api.csproj"
 COPY . .
