@@ -13,4 +13,13 @@ jobs:
     - name: Copy files in repos
       uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-cicd-docker-core
+      #run: docker build . --file Dockerfile --tag my-cicd-docker-core
+      env:
+        HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+        HEROKU_EMAIL: ${{secrets.HEROKU_EMAIL}}
+        APP_NAME: ${{'cicd-docker-web-api'}}
+      run:
+        #cd ./WebAppCICD/WebAppCICD.Api
+        docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
+        heroku container:push web -a $APP_NAME
+        heroku container:release web -a $APP_Name
