@@ -7,6 +7,7 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
+COPY *.sln .
 COPY ["WebAppCICD.Api/WebAppCICD.Api.csproj", "WebAppCICD.Api/"]
 RUN dotnet restore "WebAppCICD.Api/WebAppCICD.Api.csproj"
 COPY . .
