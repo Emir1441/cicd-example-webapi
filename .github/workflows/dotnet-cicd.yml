@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Copy files in repo
+    - name: Copy files in repos
       uses: actions/checkout@v3
     - name: Build and deploy the docker image
       env:
