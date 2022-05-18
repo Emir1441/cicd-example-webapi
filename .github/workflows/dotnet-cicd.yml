@@ -2,19 +2,16 @@ name: .NET
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+    - master
+    - release/*
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - name: Copy files
       uses: actions/checkout@v3
-      
     - name: Build and deploy the docker image
       env:
         HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
