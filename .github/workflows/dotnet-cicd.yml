@@ -21,7 +21,7 @@ jobs:
         HEROKU_EMAIL: ${{secrets.HEROKU_EMAIL}}
         APP_NAME: ${{'web-api-net-core'}}
       run:
-        cd ./ASPNetCoreLabs/HerokuContainer
+        #cd ./ASPNetCoreLabs/HerokuContainer
         docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
         heroku container:push web -a $APP_NAME
         heroku container:release web -a $APP_Name
