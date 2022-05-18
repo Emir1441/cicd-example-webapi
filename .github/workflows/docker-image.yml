@@ -17,7 +17,7 @@ jobs:
       env:
         HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         HEROKU_EMAIL: ${{secrets.HEROKU_EMAIL}}
-        APP_NAME: ${{'cicd-docker-web-api'}}
+        APP_NAME: ${{'dotnet-docker-heroku-api'}}
       run:
         #cd ./WebAppCICD/WebAppCICD.Api
         docker login --username=$HEROKU_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
