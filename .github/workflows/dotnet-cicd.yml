@@ -2,8 +2,8 @@ name: .NET
 
 on:
   push:
-    branches:
-    - master
+    branches: [master]
+    #- master
     #- release/*
 
 jobs:
