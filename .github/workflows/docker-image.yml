@@ -13,4 +13,4 @@ jobs:
     - name: Copy files in repos
       uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file WebAppCICD/Dockerfile --tag my-cicd-docker-core
+      run: docker build . --file Dockerfile --tag my-cicd-docker-core
