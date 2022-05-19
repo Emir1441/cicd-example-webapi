@@ -1,5 +1,10 @@
 name: Docker Image CI
 
+env:
+  HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+  HEROKU_EMAIL: ${{secrets.HEROKU_EMAIL}}
+  APP_NAME: ${{'dotnet-docker-heroku-api'}}
+
 on:
   push:
     branches: [ main ]
@@ -14,10 +19,7 @@ jobs:
       uses: actions/checkout@v3
     - name: Build the Docker image
       #run: docker build . --file Dockerfile --tag my-cicd-docker-core
-      env:
-        HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-        HEROKU_EMAIL: ${{secrets.HEROKU_EMAIL}}
-        APP_NAME: ${{'dotnet-docker-heroku-api'}}
+
       run: docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
 
 # Push the Docker image to Heroku Container Registry
