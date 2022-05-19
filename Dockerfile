@@ -20,4 +20,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet WebAppCICD.Api.dll
-#ENTRYPOINT ["dotnet", "WebAppCICD.Api.dll"]
+
