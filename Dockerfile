@@ -19,4 +19,5 @@ RUN dotnet publish "WebAppCICD.Api.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "WebAppCICD.Api.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet WebAppCICD.Api.dll
+#ENTRYPOINT ["dotnet", "WebAppCICD.Api.dll"]
